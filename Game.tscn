@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Nebula.jpg" type="Texture" id=1]
+[ext_resource path="res://Assets/greenPlayer.png" type="Texture" id=2]
+[ext_resource path="res://Player/Player.gd" type="Script" id=3]
+[ext_resource path="res://Enemy/EnemyBlack.gd" type="Script" id=4]
+[ext_resource path="res://HUD/HUD.gd" type="Script" id=5]
+[ext_resource path="res://Game.gd" type="Script" id=6]
+[ext_resource path="res://Enemy/EnemyRed.gd" type="Script" id=7]
+[ext_resource path="res://Meteor/Meteors.gd" type="Script" id=8]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="HUD" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="HUD"]
+margin_right = 1024.0
+margin_bottom = 40.0
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="HUD"]
+margin_left = 10.0
+margin_right = 53.0
+margin_bottom = 40.0
+text = "Score:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Enemy" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Enemy2" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="Meteor" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Explosions" type="Node2D" parent="."]
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 512, 550 )
+collision_layer = 2147483650
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player"]
+position = Vector2( -7.1272, 0 )
+scale = Vector2( 0.8, 0.8 )
+polygon = PoolVector2Array( 12.5, -34.9, 16.2, -14.5, 17.1, -14.5, 35.8, -2.7, 42.6, -10.5, 49.3, -10.5, 49.5, 24.7, 46.6, 29.5, 42.7, 29.5, 39.7, 26.5, 16.4, 31.2, 11.9, 37.5, -12.2, 37.5, -18.4, 30.5, -22.8, 30.5, -39.8, 25.5, -45.2, 29.8, -47.5, 28.8, -47.5, 27.3, -49.5, 25.3, -49.5, -9.5, -48.9, -9.5, -41.5, -10.9, -41.5, -8.4, -35.9, -3.5, -17.5, -12.8, -12.5, -34.9, -12.5, -37.5, 12.5, -37.5 )
